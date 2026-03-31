@@ -1,0 +1,77 @@
+{
+  "clientes": [
+    {
+      "nome": "João Silva",
+      "cpf": "12345678900",
+      "email": "joao@email.com.br",
+      "id": "1"
+    },
+    {
+      "nome": "eduardo silva",
+      "cpf": "12345678900",
+      "email": "email@email.com",
+      "id": "JGEqmGiTrSk"
+    }
+  ],
+  "contas": [
+    {
+      "numero": 9719,
+      "clienteId": "1",
+      "tipo": "Corrente",
+      "saldo": 0,
+      "status": "Ativa",
+      "id": "Q06G4GfeWiU"
+    },
+    {
+      "numero": 9660,
+      "clienteId": "JGEqmGiTrSk",
+      "tipo": "Corrente",
+      "saldo": 15000,
+      "status": "Ativa",
+      "id": "6sgVRBEqZZY"
+    }
+  ],
+  "transacoes": [
+    {
+      "id": "1",
+      "contaId": null,
+      "tipo": "Depósito",
+      "valor": 1000,
+      "novoSaldo": 5000,
+      "data": "2026-03-16"
+    },
+    {
+      "contaId": null,
+      "tipo": "Depósito",
+      "valor": 5000,
+      "novoSaldo": 5000,
+      "data": "2026-03-31",
+      "id": "RkcMco133v0"
+    },
+    {
+      "contaId": null,
+      "tipo": "Saque",
+      "valor": 1000,
+      "novoSaldo": 4000,
+      "data": "2026-03-31",
+      "id": "zGNuRpV2OjM"
+    },
+    {
+      "contaId": null,
+      "tipo": "Saque",
+      "valor": 4000,
+      "novoSaldo": 0,
+      "data": "2026-03-31",
+      "id": "Thghbz9AlV4"
+    },
+    {
+      "contaId": "6sgVRBEqZZY",
+      "tipo": "Depósito",
+      "valor": 15000,
+      "novoSaldo": 15000,
+      "data": "2026-03-31",
+      "id": "euDyFJlBrFs"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

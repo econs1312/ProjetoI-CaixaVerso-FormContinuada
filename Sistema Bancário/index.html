@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Bank</title> 
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Future Bank</h1> 
+        <nav>
+            <button onclick="mudarAba('clientes')">Clientes</button>
+            <button onclick="mudarAba('contas')">Contas</button>
+            <button onclick="mudarAba('transacoes')">Transações</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="msg-box" class="hidden"></div>
+
+        <section id="aba-clientes" class="aba">
+            <h2>Gestão de Clientes</h2>
+            <form id="form-cliente">
+                <input type="hidden" id="cliente-id">
+                <input type="text" id="cliente-nome" placeholder="Nome" required>
+                <input type="text" id="cliente-cpf" placeholder="CPF" required>
+                <input type="email" id="cliente-email" placeholder="Email" required>
+                <button type="submit">Salvar Cliente</button>
+            </form>
+            <input type="text" id="filtro-cliente" placeholder="Filtrar por nome... (Bônus)">
+            <table>
+                <thead><tr><th>Nome</th><th>CPF</th><th>Email</th><th>Ações</th></tr></thead>
+                <tbody id="tabela-clientes"></tbody>
+            </table>
+        </section>
+
+        <section id="aba-contas" class="aba hidden">
+            <h2>Gestão de Contas</h2>
+            <form id="form-conta">
+                <select id="conta-clienteId" required><option value="">Selecione o Cliente</option></select>
+                <select id="conta-tipo" required>
+                    <option value="Corrente">Corrente</option>
+                    <option value="Poupança">Poupança</option>
+                </select>
+                <button type="submit">Criar Conta</button>
+            </form>
+            <table>
+                <thead><tr><th>Número</th><th>Cliente</th><th>Tipo</th><th>Saldo</th><th>Status</th><th>Ações</th></tr></thead>
+                <tbody id="tabela-contas"></tbody>
+            </table>
+        </section>
+
+        <section id="aba-transacoes" class="aba hidden">
+            <h2>Transações</h2>
+            <form id="form-transacao">
+                <select id="transacao-contaId" required><option value="">Selecione a Conta</option></select>
+                <select id="transacao-tipo" required>
+                    <option value="Depósito">Depósito</option>
+                    <option value="Saque">Saque</option>
+                </select>
+                <input type="number" id="transacao-valor" placeholder="Valor" step="0.01" required>
+                <button type="submit">Registrar</button>
+            </form>
+            <table>
+                <thead><tr><th>Data</th><th>Tipo</th><th>Valor</th><th>Saldo Novo</th></tr></thead>
+                <tbody id="tabela-transacoes"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+    <script>
+        // Lógica simples de navegação salva no localStorage (Bônus)
+        function mudarAba(abaId) {
+            document.querySelectorAll('.aba').forEach(aba => aba.classList.add('hidden'));
+            document.getElementById(`aba-${abaId}`).classList.remove('hidden');
+            localStorage.setItem('abaAtiva', abaId);
+        }
+        const abaSalva = localStorage.getItem('abaAtiva') || 'clientes';
+        mudarAba(abaSalva);
+    </script>
+</body>
+</html>
